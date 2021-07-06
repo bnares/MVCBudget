@@ -4,13 +4,78 @@
 
 {% block body %}
 
-    <h1>Welcome</h1>
-    <p>Hello from a Twig template, {{ name }}!</p>
+    <h1>Index Page</h1>
+    <body>
 
-    <ul>
-        {% for colour in colours %}
-            <li>{{ colour }}</li>
-        {% endfor %}
-    </ul>
+<main>
+
+	
+	
+		<div class = "container">
+		
+			<header>
+				
+				<h1 class = "title">MY BUDGET</h1>
+			
+			</header>
+			
+			<br><br><br>
+			<article>
+			
+				<div class ='title'>
+					
+						
+				<form>
+				
+					
+					
+					
+					
+						<div class = "button">
+						
+							
+							<label> 
+								<a href = "/BudgetMVC/public/?signup/new">Rejestracja</a>
+							</label>
+						
+						</div>
+						
+					
+						
+						
+					
+						<div class = "button">
+						
+							<label>
+							
+							
+							<a href = "/BudgetMVC/public/?login/new">Logowanie</a>
+							
+							</label>
+
+									
+						
+						</div>
+						
+				
+				
+				</form>
+				
+			
+			</article>
+			
+		
+		</div>
+	
+	</div>
+
+
+
+
+</main>
+
+
+
+</body>
 
 {% endblock %}
