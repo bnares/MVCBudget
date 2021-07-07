@@ -46,6 +46,7 @@ class View
         if ($twig === null) {
             $loader = new \Twig_Loader_Filesystem('../App/Views');
             $twig = new \Twig_Environment($loader);
+			$twig->addGlobal('server', $_SERVER['HTTP_HOST']);
         }
 
         echo $twig->render($template, $args);

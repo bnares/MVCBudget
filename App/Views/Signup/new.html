@@ -2,9 +2,78 @@
 
 {% block title %}Sign up{% endblock %}
 
+{% block footer %}
+<script src = "../js/hideShowPassword.min.js"></script>
+	<script>
+	
+		$.validator.addMethod('validPassword', 
+			function(value, element, param){
+			
+				if(value !=''){
+					if(value.match(/.*[a-z]+.*/i)==null){
+						return false;
+					}
+					
+					if(value.match(/.*\d+.*/)== null){
+					
+						return false;
+					}
+				}
+				return true;
+			},
+			'Must contaains at least one letter and one number'
+		
+		);
+	
+	
+		$(document).ready(function(){
+		
+			$('#formSignup').validate({
+				
+				rules: {
+					login: 'required',
+					email: {
+						required: true,
+						email: true,
+						remote: '/BudgetMVC/public/?account/validate-email'
+						
+						//'http://'.$_SERVER['HTTP_HOST'].'/BudgetMVC/public/?account/validate-email'
+						//'http://localhost/BudgetMVC/public/?account/validate-email'
+						
+					},
+					pass: {
+						required:true,
+						minlength: 6,
+						validPassword: true
+					
+					},
+					confirmPass: {
+						equalTo: '#inputPassword'   //here must add id value otherwise it is not going to work
+					},
+					
+				},
+					messages: {
+						email:{
+							remote: "email already taken"
+						}
+					}
+				
+			});
+			
+			
+			$("#pass").hideShowPassword({
+				show:false,
+				innerToggle: 'focus'
+			});
+			
+		});
+	
+	</script>
+{% endblock %}
+
 {% block body %}
 
-	<h1>Rejestracja</h1>
+	<h1>Sign up</h1>
 	
 	<body>
 	
@@ -17,17 +86,17 @@
 		</ul>
 	{% endif %}
 	
-	<form method = "post" action = "/BudgetMVC/public/?signup/create">
+	<form method = "post" action = "/BudgetMVC/public/?signup/create" id = "formSignup">
 	
 		Login:<br/><input type = "text" name = "login" placeholder = "Login" value = "{{user.login}}" />
 		
 		<br/>
-		Haslo:<br/><input type = "password" name = "pass" placeholder = "Password"/>
+		Haslo:<br/><input type = "password" name = "pass" placeholder = "Password" id = "inputPassword" />
 		<br>
-		Powtórz Haslo:<br/><input type = "password" name = "confirmPass" placeholder = "Confirm Password"/>
+		Powtórz Haslo:<br/><input type = "password" name = "confirmPass" placeholder = "Confirm Password" id = "inputPasswordConfirmation"/>
 		
 		<br>
-		Email:<br/><input type = "email" name = "email" placeholder = "Email" value = "{{user.email}}">
+		Email:<br/><input type = "email" name = "email" placeholder = "Email" value = "{{user.email}}" />
 		
 		
 		
@@ -38,7 +107,7 @@
 	</form>
 	
 	
-	
+
 	
 	</body>
 	

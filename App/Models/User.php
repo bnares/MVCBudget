@@ -60,7 +60,7 @@ class User extends \Core\Model {
 			$this->errors[] = "Email is not valid";
 		}
 		
-		if(! $this->emailExist($this->email)){
+		if(static::emailExist($this->email)){
 			$this->errors[]='Email already exist';
 		}
 	}
@@ -78,12 +78,12 @@ class User extends \Core\Model {
 		return $stmt->fetch();
 	}
 	
-	public function emailExist($email){
+	public static function emailExist($email){
 		
 		if(static::findByEmail($email)){
-			return false;
+			return true;  //jesli znalazles rekord to zworc false
 		}
-		return true;
+		return false;  //jesli rekordu nie ma zwroc true
 	}
 	
 	
