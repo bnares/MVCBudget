@@ -29,5 +29,16 @@
 
 
 	</form>
+	
+	{% if user.success is not empty  %}
+	
+		
+		
+		{% for mes in user.success %}
+				{{mes}}
+			{% endfor %}
+		
+		
+	{% endif %}
 
 {%endblock%}
