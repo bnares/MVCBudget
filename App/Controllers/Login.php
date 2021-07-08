@@ -10,4 +10,10 @@ class Login extends \Core\Controller {
 		
 		View::renderTemplate('Login\new.html');
 	}
+	
+	public function createAction(){
+		
+		var_dump($_POST);
+		echo ($_REQUEST['email']);
+	}
 }
