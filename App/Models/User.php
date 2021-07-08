@@ -38,10 +38,7 @@ class User extends \Core\Model {
 			$this->errors[] = "login Must must consist of at least 3 characters";
 		}
 		
-		if($this->pass != $this->confirmPass){
-			
-			$this->errors[]="Passwords do not match";
-		}
+		
 		
 		if(strlen($this->pass)<3){
 			$this->errors[] = "Password must be longer than 3 characters";

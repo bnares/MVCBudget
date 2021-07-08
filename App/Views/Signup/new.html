@@ -3,7 +3,7 @@
 {% block title %}Sign up{% endblock %}
 
 {% block footer %}
-<script src = "../js/hideShowPassword.min.js"></script>
+<script src = "../public/js/hideShowPassword.min.js"></script>
 	<script>
 	
 		$.validator.addMethod('validPassword', 
@@ -46,10 +46,10 @@
 						minlength: 6,
 						validPassword: true
 					
-					},
-					confirmPass: {
-						equalTo: '#inputPassword'   //here must add id value otherwise it is not going to work
-					},
+					}
+					//confirmPass: {
+						//equalTo: '#inputPassword'   //here must add id value otherwise it is not going to work
+					//},
 					
 				},
 					messages: {
@@ -61,8 +61,8 @@
 			});
 			
 			
-			$("#pass").hideShowPassword({
-				show:false,
+			$('#pass').hideShowPassword({
+				show: false,
 				innerToggle: 'focus'
 			});
 			
@@ -88,19 +88,20 @@
 	
 	<form method = "post" action = "/BudgetMVC/public/?signup/create" id = "formSignup">
 	
-		Login:<br/><input type = "text" name = "login" placeholder = "Login" value = "{{user.login}}" />
-		
+		Login:<br/><input type = "text" id = "login" name = "login" placeholder = "Login" value = "{{user.login}}" />
+		<br>
 		<br/>
 		Haslo:<br/><input type = "password" name = "pass" placeholder = "Password" id = "inputPassword" />
 		<br>
-		Powtórz Haslo:<br/><input type = "password" name = "confirmPass" placeholder = "Confirm Password" id = "inputPasswordConfirmation"/>
+		
 		
 		<br>
-		Email:<br/><input type = "email" name = "email" placeholder = "Email" value = "{{user.email}}" />
+		Email:<br/><input type = "email" id = "email" name = "email" placeholder = "Email" value = "{{user.email}}" />
 		
 		
 		
 		
+		<br>
 		<br>
 		<label><input type = "submit" name= "signin" value = "Sign up"></label>
 	
