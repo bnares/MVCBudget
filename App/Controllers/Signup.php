@@ -27,9 +27,10 @@ class Signup extends \Core\Controller {
 		
 			$user->save();
 			//$user->success = "New user Has been Added";
-			//View::renderTemplate('login\new.html', ['user'=>$user]);
-			header('Location: http://'.$_SERVER['HTTP_HOST'].'/BudgetMVC/public/?login/new');
-			//header('Location: http://localhost/BudgetMVC/public/?login/new');
+			
+			//header('Location: http://'.$_SERVER['HTTP_HOST'].'/BudgetMVC/public/?login/new');
+			
+			$this->redirect('BudgetMVC/public/?login/new');
 		
 		}else{
 			//var_dump($user->errors);

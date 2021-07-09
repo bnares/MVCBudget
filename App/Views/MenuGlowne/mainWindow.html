@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+
+
+{% block body %}
+	
+		
+			<header>
+			
+				<nav class = "navbar navbar-dark bg-primary navbar-expand-lg">  
+			
+					<a class = "navbar-brand" href = "menuGlowne.php"><img src ="img/wallet1.png" width = "30" height = "30" class = "d-inline-block mr-1 align-bottom" alt = "" ></a>
+				
+					
+					
+					<button class = "navbar-toggler" type = "button" data-toggle = "collapse" data-target = "#mainmenu">
+						<span class = "navbar-toggler-icon"></span>
+					</button>
+					
+					
+					
+					<div class ="collapse navbar-collapse" id = "mainmenu">
+						<ul class = "navbar-nav">
+						
+							<li class = "nav-item active">
+							
+								<a class = "nav-link" href ="menuGlowne.php">Start</a>
+							
+							</li>
+							
+							
+							<li class = "nav-item">
+							
+								<a class = "nav-link" href ="dodajPrzychod.php">Dodaj Przychód</a>
+							
+							</li>
+							
+							<li class = "nav-item">
+							
+								<a class = "nav-link" href ="dodajWydatek.php">Dodaj Wydatek</a>
+							
+							</li>
+							
+							<li class = "nav-item">
+							
+								<a class = "nav-link" href ="bilans.php">Bilans</a>
+							
+							</li>
+							
+							
+							<li class = "nav-item">
+							
+								<a class = "nav-link" href ="ustawienia.php">Ustawienia</a>
+							
+							</li>
+							
+							
+							<li class = "nav-item">
+								
+								<form method = "post">
+									<a class = "nav-link" href ="logowanie.php">
+										<label><button name = "wyloguj">Wyloguj</button></label>
+									</a>
+								</form>
+							
+							</li>
+							
+						
+						</ul>
+					</div>
+			
+					
+				</nav>
+			
+			</header>
+			
+			<div>
+			
+				HELLO user id number {{session.user_id}}
+				
+				<br>
+				<a href = "http://{{server}}/BudgetMVC/public/?logout">Log out</a>
+				<br>
+				
+			</div>
+			
+{% endblock %}		
+			
+	
+
+{% block footer %}
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	
+	<script src="js/bootstrap.min.js"></script>
+
+{% endblock %}

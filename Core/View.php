@@ -47,6 +47,7 @@ class View
             $loader = new \Twig_Loader_Filesystem('../App/Views');
             $twig = new \Twig_Environment($loader);
 			$twig->addGlobal('server', $_SERVER['HTTP_HOST']);
+			$twig->addGlobal('session', $_SESSION); 
         }
 
         echo $twig->render($template, $args);
