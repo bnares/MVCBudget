@@ -14,7 +14,9 @@
 	
 	<meta http-equiv="X-Ua-Compatible" content="IE=edge">
 	
-	<link rel="stylesheet" href="/public/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../public/css/bootstrap.min.css">
+	
+	<link rel = "stylesheet" href = "../public/css/style.css" />
 	
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=latin-ext" rel="stylesheet">
 	
@@ -31,8 +33,20 @@
         <a href="/BudgetMVC/public/">Home</a> |
         
     </nav>
+	
+	
+	
+		{% for mes in flash_message %}
+			<div class = "alert">
+				{{mes}}
+			</div>
+		{% endfor %}
+	
 
     {% block body %}
+	
+	
+	
     {% endblock %}
 	
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

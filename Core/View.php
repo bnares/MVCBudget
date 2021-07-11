@@ -47,7 +47,10 @@ class View
             $loader = new \Twig_Loader_Filesystem('../App/Views');
             $twig = new \Twig_Environment($loader);
 			$twig->addGlobal('server', $_SERVER['HTTP_HOST']);
-			$twig->addGlobal('session', $_SESSION); 
+			//$twig->addGlobal('session', $_SESSION); 
+			$twig->addGlobal('is_logged_in', \App\Auth::isLoggedIn());
+			$twig->addGlobal('user', \App\Auth::getUser());   //dzieki temu bedziemy mogli odwolywac sie do plikow html do wszystkih danych uzytkownika zalogowanego
+			$twig->addGlobal('flash_message', \App\Flash::getMessage());
         }
 
         echo $twig->render($template, $args);

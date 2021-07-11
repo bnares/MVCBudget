@@ -31,7 +31,7 @@
 							
 							<li class = "nav-item">
 							
-								<a class = "nav-link" href ="dodajPrzychod.php">Dodaj Przychód</a>
+								<a class = "nav-link" href ="/BudgetMVC/public/?dodaj-przychod/display">Dodaj Przychód</a>
 							
 							</li>
 							
@@ -76,11 +76,15 @@
 			
 			<div>
 			
-				HELLO user id number {{session.user_id}}
 				
-				<br>
-				<a href = "http://{{server}}/BudgetMVC/public/?logout">Log out</a>
-				<br>
+				{% if is_logged_in %}
+					Witaj: {{ user.username }}
+					<br>
+					<a href = "http://{{server}}/BudgetMVC/public/?logout">Log out</a>
+					<br>
+				{% else %}
+					{{ MENU }}
+				{% endif %}
 				
 			</div>
 			

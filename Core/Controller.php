@@ -2,6 +2,9 @@
 
 namespace Core;
 
+use \App\Auth;
+use \App\Flash;
+
 /**
  * Base controller
  *
@@ -42,8 +45,9 @@ abstract class Controller
     public function __call($name, $args)
     {
         $method = $name . 'Action';
-
+		//var_dump($method." from __call method ");
         if (method_exists($this, $method)) {
+			
             if ($this->before() !== false) {
                 call_user_func_array([$this, $method], $args);
                 $this->after();
@@ -73,8 +77,20 @@ abstract class Controller
 	
 	
 	public function redirect($url){
-		header('Location://'.$_SERVER['HTTP_HOST'].'/'.$url, true, 303);
+		header('Location: http://'.$_SERVER['HTTP_HOST'].'/'.$url, true, 303);
 		exit;
+	}
+	
+	
+	public function requireLogin(){   //funkcja ssprawdzajaca czy uzytkkownik mozewejsc na strony przeznaczone dla zalogowanych
+		
+		if(! Auth::isLoggedIn())  //warunek ktory przekierowuje uzystkownika na inna strone jesli nie jest zalogowany
+		{
+			Flash::addMessage('Please log in to acces that page');
+			Auth::rememberRequestedPage();
+			$this->redirect('BudgetMVC/public/?login/new');
+		}
+		
 	}
 	
 }

@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use \Core\View;
 use \App\Models\User;
+use \App\Auth;
+use \App\Flash;
 
 class Login extends \Core\Controller {
 	
@@ -13,19 +15,23 @@ class Login extends \Core\Controller {
 	}
 	
 	public function createAction(){
-		//echo "<br>START";
-		//echo "<br>".$_POST['email'];
+		
 		$user = User::authenticate($_POST['email'], $_POST['password']);
 		if($user){
 			
-			session_regenerate_id(true); //zmien kod sesji po zalogowaniu dzieki temu zmniejszasz prawdopodobienstwo ataku
-			$_SESSION['user_id'] = $user->id;
+			Auth::login($user);
+			if(isset($_SESSION['return_to'])){
+				$this->redirect(Auth::getReturnPage());
+			}
+			
+			Flash::addMessage('Login sucessful');
 			$this->redirect('BudgetMVC/public/?menu-glowne/mainWindow');
 			
 		}else{
-				
+				Flash::addMessage('Wrong email or Password. Try again');
 				View::renderTemplate('Login/new.html', [
-				'email'=>$_POST['email']]);                //zmienna prezentowana w twigu jesli logowanie nie wyjdzie 
+				'email'=>$_POST['email'],
+				'errors'=>$_SESSION['flash_notifications']]);                //zmienna prezentowana w twigu jesli logowanie nie wyjdzie 
 				
 			}
 	}
@@ -33,27 +39,17 @@ class Login extends \Core\Controller {
 	
 	public function destroyAction(){
 		
-		$_SESSION = array();
-
-// If it's desired to kill the session, also delete the session cookie.
-// Note: This will destroy the session, and not just the session data!
-	if (ini_get("session.use_cookies")) {
-		$params = session_get_cookie_params();
-		setcookie(
-			session_name(),
-			'',
-			time() - 42000,
-			$params["path"],
-			$params["domain"],
-			$params["secure"],
-			$params["httponly"]
-		);
-	}
-
-// Finally, destroy the session.
-		session_destroy();
-		$this->redirect('BudgetMVC/public/');
 		
+		Auth::logout();
+		$this->redirect('BudgetMVC/public/?login/show-logout-message');
+		
+		
+	}
+	
+	public function showLogoutMessage(){
+		
+		Flash::addMessage('Loging out succesfully');
+		$this->redirect('BudgetMVC/public/');
 	}
 	
 	
