@@ -39,4 +39,6 @@ class Config
      * @var boolean
      */
     const SHOW_ERRORS = true;
+	
+	const SECRET_KEY = '5E8FEBCFE11E2F2697EA1A64AD429'; //randomkeygen.com 256 bits key
 }

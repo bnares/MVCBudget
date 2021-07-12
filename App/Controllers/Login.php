@@ -17,9 +17,12 @@ class Login extends \Core\Controller {
 	public function createAction(){
 		
 		$user = User::authenticate($_POST['email'], $_POST['password']);
+		
+		$remember_me = isset($_POST['remember_me']);
+		
 		if($user){
 			
-			Auth::login($user);
+			Auth::login($user, $remember_me);
 			if(isset($_SESSION['return_to'])){
 				$this->redirect(Auth::getReturnPage());
 			}
@@ -28,10 +31,11 @@ class Login extends \Core\Controller {
 			$this->redirect('BudgetMVC/public/?menu-glowne/mainWindow');
 			
 		}else{
-				Flash::addMessage('Wrong email or Password. Try again');
+				Flash::addMessage('Wrong email or Password. Try again', Flash::WARNING);
 				View::renderTemplate('Login/new.html', [
 				'email'=>$_POST['email'],
-				'errors'=>$_SESSION['flash_notifications']]);                //zmienna prezentowana w twigu jesli logowanie nie wyjdzie 
+				'remember_me'=>$remember_me
+				]);                //zmienna prezentowana w twigu jesli logowanie nie wyjdzie 
 				
 			}
 	}

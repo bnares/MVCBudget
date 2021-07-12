@@ -86,7 +86,7 @@ abstract class Controller
 		
 		if(! Auth::isLoggedIn())  //warunek ktory przekierowuje uzystkownika na inna strone jesli nie jest zalogowany
 		{
-			Flash::addMessage('Please log in to acces that page');
+			Flash::addMessage('Please log in to acces that page', Flash::INFO);
 			Auth::rememberRequestedPage();
 			$this->redirect('BudgetMVC/public/?login/new');
 		}

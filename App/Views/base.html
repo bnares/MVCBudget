@@ -36,9 +36,9 @@
 	
 	
 	
-		{% for mes in flash_message %}
-			<div class = "alert">
-				{{mes}}
+		{% for information in flash_message %}
+			<div class = "alert-{{ information.type }}">
+				{{information.mes}}
 			</div>
 		{% endfor %}
 	

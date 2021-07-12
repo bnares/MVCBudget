@@ -3,3 +3,21 @@
 	border: 1px solid #ccc;
 	padding: 6px;
 }
+
+
+
+.alert-info{
+	
+	background-color:#d9edf7;
+}
+
+.alert-warning{
+	
+	background-color:#dff0d8;
+}
+
+
+.alert-success{
+	
+	background-color: #fcf8e3;
+}

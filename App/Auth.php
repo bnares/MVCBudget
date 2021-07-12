@@ -8,9 +8,13 @@ use \App\Flash;
 
 class Auth{
 	
-	public static function login($user){
+	public static function login($user, $remember_me){
 		session_regenerate_id(true); //zmien kod sesji po zalogowaniu dzieki temu zmniejszasz prawdopodobienstwo ataku
 		$_SESSION['user_id'] = $user->id;
+		if($remember_me){
+			
+			$user->rememberLogin();
+		}
 	}
 	
 	
