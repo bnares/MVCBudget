@@ -91,9 +91,9 @@ class User extends \Core\Model {
 	public static function emailExist($email){
 		
 		if(static::findByEmail($email)){
-			return true;  //jesli znalazles rekord to zworc false
+			return true;  //jesli znalazles rekord to zworc true
 		}
-		return false;  //jesli rekordu nie ma zwroc true
+		return false;  //jesli rekordu nie ma zwroc false
 	}
 	
 	public static function authenticate($email, $password){

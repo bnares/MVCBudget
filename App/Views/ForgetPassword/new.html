@@ -1,0 +1,47 @@
+{%extends 'base.html' %}
+{% block title %}Forget Password form{%endblock%}
+
+{% block body %}
+
+<h1>Forget Password</h1>
+
+<form method = "post" action = "/BudgetMVC/public/?forget-password/newPassword">
+
+<div>
+<label>
+	Email:<input type = "email" placeholder = "email" name = "email" id = "email" value = "{{email}}" />
+</label>
+
+</div>
+
+
+<!--
+<div>
+
+	<label>
+		Password:<input type = "password" placeholder = "New Password" name = "password" id = "password" require />
+	
+	</label>
+
+</div>
+
+
+<div>
+
+	<label>
+		Confirm:<input type = "password" placeholder = "Confirm Password" name = "passwordConfirm" id = "passwordConfirm" require />
+	
+	</label>
+
+</div>
+
+-->
+
+
+<br>
+
+<button type = "submit">Confirm</button>
+
+</form>
+
+{%endblock%}

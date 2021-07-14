@@ -31,7 +31,7 @@ class Login extends \Core\Controller {
 			$this->redirect('BudgetMVC/public/?menu-glowne/mainWindow');
 			
 		}else{
-				Flash::addMessage('Wrong email or Password. Try again', Flash::WARNING);
+				Flash::addMessage('Wrong email or Password. Try again', Flash::WARNING); //komunikat ktory bedzie wyswietlany bo bledzie i typ komunikatu. od typu komunikatu zalezy kolor wiadomosci wyswietlanej
 				View::renderTemplate('Login/new.html', [
 				'email'=>$_POST['email'],
 				'remember_me'=>$remember_me
