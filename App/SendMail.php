@@ -19,7 +19,7 @@ $mail->SMTPSecure = 'ssl'; /* Jeżeli ma być aktywne szyfrowanie SSL */
 $mail->SMTPAuth = true;
 $mail->IsHTML(true);
 $mail->Username = "piotr.ostrouch@gmail.com"; /* login do skrzynki email często adres*/
-$mail->Password = "zostaneprogramistom2020"; /* Hasło do poczty */
+$mail->Password = "haslo"; /* Hasło do poczty */
 $mail->setFrom('piotr.ostrouch@gmail.com', 'Piotr Ostrouch'); /* adres e-mail i nazwa nadawcy */
 $mail->AddAddress("piotr.ostrouch@gmail.com"); /* adres lub adresy odbiorców */
 $mail->Subject = "Testowa wiadomość SMTP"; /* Tytuł wiadomości */
