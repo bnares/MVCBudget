@@ -9,7 +9,7 @@
 				$mail->SMTPAuth = true;
 				$mail->IsHTML(true);
 				$mail->Username = "piotr.ostrouch.programista@gmail.com"; /* login do skrzynki email często adres*/
-				$mail->Password = "olatarunia1989"; /* Hasło do poczty */
+				$mail->Password = ""; /* Hasło do poczty */
 				$mail->setFrom('piotr.ostrouch.programista@gmail.com', 'Piotr Ostrouch'); /* adres e-mail i nazwa nadawcy */
 				$mail->AddAddress("piotr.ostrouch@gmail.com"); /* adres lub adresy odbiorców */
 				$mail->Subject = "Testowa wiadomość SMTP"; /* Tytuł wiadomości */
