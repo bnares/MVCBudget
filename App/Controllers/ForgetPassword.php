@@ -52,11 +52,12 @@ class ForgetPassword extends \Core\Controller{
 				$mail->SMTPAuth = true;
 				$mail->IsHTML(true);
 				$mail->Username = "mybudget@piotrostrouch.pl"; /* login do skrzynki email często adres*/
-				$mail->Password = "olatarunia1989"; /* Hasło do poczty */
+				$mail->Password = ""; /* Hasło do poczty */
 				$mail->setFrom('mybudget@piotrostrouch.pl', 'Piotr Ostrouch'); /* adres e-mail i nazwa nadawcy */
 				$mail->AddAddress("piotr.ostrouch@gmail.com"); /* adres lub adresy odbiorców */
 				$mail->Subject = "Testowa wiadomość SMTP"; /* Tytuł wiadomości */
-				$mail->Body = "Witaj, Jeżeli to czytasz, to znaczy, że udało się poprawnie wysłać e-maila za pomocą SMTP!"."<a href = onet.pl>Kliknij</a>";
+				$mail->Body = "Hello, click on the link below to reset the password<br>"."<a href = ".$_SERVER['HTTP_HOST']."/BudgetMVC/public/?change-password/new> click on me to reset the password</a>";
+
 
 				if(!$mail->Send()) {
 				echo "Błąd wysyłania e-maila: " . $mail->ErrorInfo;
